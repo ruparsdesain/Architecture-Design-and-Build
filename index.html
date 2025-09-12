@@ -7,7 +7,7 @@
 <style>
 * {margin:0; padding:0; box-sizing:border-box; font-family: Arial, sans-serif;}
 body {
-    background: url('https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=1470&q=80') no-repeat center center fixed;
+    background: url('https://images.unsplash.com/photo-1523413651479-597eb2da0ad6?auto=format&fit=crop&w=1470&q=80') no-repeat center center fixed;
     background-size: cover;
     color: #333;
     scroll-behavior: smooth;
@@ -146,7 +146,131 @@ footer { text-align:center; padding:20px; background-color: rgba(255,255,255,0.9
     <a href="#contact">Kontak</a>
 </nav>
 
-<!-- isi section sama seperti versi sebelumnya -->
-<!-- ... -->
+<section id="portfolio">
+    <h2>Portfolio</h2>
+    <div class="slider">
+        <div class="slides">
+            <div class="slide">
+                <img src="https://github.com/ruparsdesain/Architecture-Design-and-Build/blob/main/portfolio%201.jpg" alt="Proyek Rumah">
+                <p>Rumah Villa 2 lantai dengan konsep modern klasik</p>
+            </div>
+            <div class="slide">
+                <img src="https://images.unsplash.com/photo-1580587771525-78b9dba3b914?auto=format&fit=crop&w=800&q=80" alt="Proyek Kantor">
+                <p>Kantor Modern dengan konsep open space</p>
+            </div>
+            <div class="slide">
+                <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=800&q=80" alt="Proyek Cafe">
+                <p>Interior Cafe bergaya industrial dengan aksen kayu</p>
+            </div>
+        </div>
+        <div class="slider-buttons">
+            <button id="prev">&#10094;</button>
+            <button id="next">&#10095;</button>
+        </div>
+    </div>
+</section>
+
+<section id="album">
+    <h2>Album Koleksi RUPArs Desain</h2>
+    <div class="album">
+        <div class="album-item"><img src="https://images.unsplash.com/photo-1505691723518-36a5ac3be353?auto=format&fit=crop&w=800&q=80" alt="Desain Rumah Minimalis"><p>Desain Rumah Minimalis</p></div>
+        <div class="album-item"><img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80" alt="Interior Modern"><p>Interior Modern</p></div>
+        <div class="album-item"><img src="https://images.unsplash.com/photo-1505691938895-1758d7feb511?auto=format&fit=crop&w=800&q=80" alt="Bangunan Komersial"><p>Bangunan Komersial</p></div>
+        <div class="album-item"><img src="https://images.unsplash.com/photo-1600585153895-81f0d87df46c?auto=format&fit=crop&w=800&q=80" alt="Cafe Estetik"><p>Cafe Estetik</p></div>
+    </div>
+</section>
+
+<section id="info">
+    <h2>Informasi Arsitektur</h2>
+    <div class="info-item">
+        <h3>Apa itu Arsitektur?</h3>
+        <p>Arsitektur adalah seni dan ilmu merancang bangunan yang fungsional, estetik, dan aman. Desain mencakup material, tata ruang, pencahayaan, dan estetika lingkungan.</p>
+    </div>
+    <div class="info-item">
+        <h3>Jenis Desain</h3>
+        <p>Kami menawarkan desain Minimalis, Modern, Klasik, dan Kontemporer, dipersonalisasi sesuai kebutuhan klien dan lokasi.</p>
+    </div>
+    <div class="info-item">
+        <h3>Tips Memilih Desain</h3>
+        <p>Pertimbangkan fungsi, estetika, anggaran, dan lokasi. Konsultasikan dengan tim arsitek agar hasil sesuai keinginan.</p>
+    </div>
+</section>
+
+<section id="contact">
+    <h2>Kontak Kami</h2>
+    <form id="contactForm" onsubmit="return sendEmail();">
+        <input type="text" id="name" placeholder="Nama" required>
+        <input type="email" id="email" placeholder="Email" required>
+        <textarea id="message" placeholder="Pesan" rows="5" required></textarea>
+        <button type="submit">Kirim Pesan</button>
+    </form>
+    <p>Alamat: Palu, Sulawesi Tengah, Indonesia</p>
+    <p>Email: ruparsdesain@gmail.com | Telepon: 085241232212</p>
+    <p>Jam Operasional: Senin-Sabtu 08.00-17.00</p>
+</section>
+
+<div class="whatsapp">
+    <a href="https://wa.me/085241232212" target="_blank"></a>
+</div>
+
+<!-- Lightbox -->
+<div id="lightbox">
+    <span class="close">&times;</span>
+    <span class="prev">&#10094;</span>
+    <img id="lightbox-img" src="">
+    <span class="next">&#10095;</span>
+</div>
+
+<footer>&copy; 2025 RUPArs Desain. All rights reserved.</footer>
+
+<script>
+// Slider
+const slides = document.querySelector('.slides');
+const slideCount = document.querySelectorAll('.slide').length;
+let index = 0;
+function showSlide(i) { slides.style.transform = `translateX(-${i*100}%)`; }
+function nextSlide() { index = (index + 1) % slideCount; showSlide(index); }
+function prevSlide() { index = (index -1 + slideCount) % slideCount; showSlide(index); }
+document.getElementById('next').addEventListener('click', nextSlide);
+document.getElementById('prev').addEventListener('click', prevSlide);
+setInterval(nextSlide, 5000);
+
+// Form Email
+function sendEmail() {
+    const name = document.getElementById('name').value;
+    const email = document.getElementById('email').value;
+    const message = document.getElementById('message').value;
+    window.location.href = `mailto:ruparsdesain@gmail.com?subject=Pesan dari ${name}&body=${message}%0D%0A%0D%0ADari: ${name} (${email})`;
+    return false;
+}
+
+// Lightbox Album
+const albumItems = document.querySelectorAll('.album-item img');
+const lightbox = document.getElementById('lightbox');
+const lightboxImg = document.getElementById('lightbox-img');
+const closeBtn = document.querySelector('#lightbox .close');
+const prevBtn = document.querySelector('#lightbox .prev');
+const nextBtn = document.querySelector('#lightbox .next');
+let currentIndex = 0;
+
+albumItems.forEach((img, i) => {
+    img.addEventListener('click', () => {
+        lightbox.style.display = 'flex';
+        lightboxImg.src = img.src;
+        currentIndex = i;
+    });
+});
+
+closeBtn.onclick = () => { lightbox.style.display = 'none'; }
+prevBtn.onclick = () => {
+    currentIndex = (currentIndex - 1 + albumItems.length) % albumItems.length;
+    lightboxImg.src = albumItems[currentIndex].src;
+}
+nextBtn.onclick = () => {
+    currentIndex = (currentIndex + 1) % albumItems.length;
+    lightboxImg.src = albumItems[currentIndex].src;
+}
+</script>
+
 </body>
 </html>
