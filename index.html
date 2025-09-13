@@ -67,18 +67,38 @@ button { background-color:#0077b6; color:white; padding:10px; border:none; borde
 button:hover { background-color:#005f87; }
 
 /* Floating WhatsApp */
-.whatsapp { position:fixed; bottom:20px; right:20px; z-index:100; transition:0.3s; }
-.whatsapp a { background-color:#25D366; color:white; border-radius:50%; padding:15px; font-size:24px; text-decoration:none; position:relative; display:flex; align-items:center; justify-content:center; overflow:hidden; }
-.whatsapp a::before {
-    content: url('https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExbGlyMTh6OHp6MmljcnZpbGl3YWZvbG04aWl1ZWZid2RsYWQ2Nm5yYSZlcD12MV9naWZzX3NlYXJjaCZjdD1n/XHVmz9r6q9L7k/giphy.gif');
-    position: absolute;
-    width: 70px;
-    height: 70px;
-    animation: bounce 2s infinite;
+.whatsapp {
+    position:fixed;
+    bottom:20px;
+    right:20px;
+    z-index:1000;
+}
+.whatsapp a {
+    background-color:#25D366;
+    color:white;
+    border-radius:50%;
+    width:60px;
+    height:60px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-decoration:none;
+    box-shadow:0 4px 12px rgba(0,0,0,0.3);
+    animation: bounce 2s infinite, pulse 1.5s infinite;
+}
+.whatsapp svg {
+    width:34px;
+    height:34px;
+    fill:white;
 }
 @keyframes bounce {
     0%, 100% { transform: translateY(0);}
-    50% { transform: translateY(-10px);}
+    50% { transform: translateY(-8px);}
+}
+@keyframes pulse {
+    0% { box-shadow: 0 0 0 0 rgba(37,211,102,0.7);}
+    70% { box-shadow: 0 0 0 20px rgba(37,211,102,0);}
+    100% { box-shadow: 0 0 0 0 rgba(37,211,102,0);}
 }
 
 /* Album Koleksi */
@@ -209,8 +229,28 @@ footer { text-align:center; padding:20px; background-color: rgba(255,255,255,0.9
     <p>Jam Operasional: Senin-Sabtu 08.00-17.00</p>
 </section>
 
+<!-- Floating WhatsApp -->
 <div class="whatsapp">
-    <a href="https://wa.me/085241232212" target="_blank"></a>
+    <a href="https://wa.me/6285241232212" target="_blank" aria-label="Chat WhatsApp">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+            <path d="M16 .396c-8.84 0-16 7.16-16 16 
+                     0 2.816.732 5.568 2.132 7.992L0 
+                     32l7.26-2.084c2.34 1.276 4.984 
+                     1.952 7.74 1.952h.004c8.84 0 
+                     16-7.16 16-16s-7.16-15.996-16-15.996zM16 
+                     29.6h-.004c-2.484 0-4.908-.66-7.028-1.908l-.504-.3-4.308 
+                     1.236 1.14-4.404-.288-.452c-1.344-2.088-2.056-4.5-2.056-6.972 
+                     0-7.22 5.876-13.092 13.096-13.092 
+                     3.5 0 6.796 1.364 9.26 3.828s3.828 
+                     5.76 3.828 9.26c0 7.22-5.876 13.092-13.092 
+                     13.092zm7.176-9.796c-.392-.196-2.324-1.144-2.684-1.272-.36-.132-.624-.196-.888.196s-1.02 
+                     1.272-1.252 1.54c-.228.26-.456.292-.848.096s-1.652-.608-3.144-1.94c-1.164-1.04-1.944-2.324-2.172-2.716-.228-.388-.024-.596.172-.792.18-.176.392-.456.588-.684.196-.228.26-.388.392-.648.132-.26.064-.488-.032-.684-.096-.196-.888-2.14-1.216-2.932-.32-.768-.648-.664-.888-.676l-.76-.012c-.26 
+                     0-.684.1-1.044.488s-1.372 1.34-1.372 3.26 1.404 3.78 
+                     1.596 4.044c.196.26 2.756 4.2 6.692 
+                     5.892.936.404 1.668.644 2.236.828.94.3 1.796.26 
+                     2.472.156.756-.112 2.324-.948 2.652-1.864.328-.916.328-1.7.228-1.864-.092-.164-.36-.26-.752-.456z"/>
+        </svg>
+    </a>
 </div>
 
 <!-- Lightbox -->
@@ -274,6 +314,3 @@ nextBtn.onclick = () => {
 
 </body>
 </html>
-
-
-
